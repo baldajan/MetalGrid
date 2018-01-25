@@ -16,10 +16,11 @@ class GridObject {
     let indexBuffer:    MTLBuffer
     let constants:      [MTLBuffer]
     
-    var objectsData: [ObjectData] = []
-    
-    let rowCount: Int = 5 // make sure it's odd
+    let rowCount: Int = 5
     let gridPad: Float = 10
+    let outerPad: Float = 200
+    
+    var time: CFTimeInterval = 0
     
     init(_ device: MTLDevice) {
         let gridCount = rowCount * rowCount
@@ -41,7 +42,7 @@ class GridObject {
         let screenWidth  = Float(UIScreen.main.bounds.width)
         let screenHeight = Float(UIScreen.main.bounds.height)
         
-        let minDim = min(screenWidth, screenHeight)
+        let minDim = min(screenWidth, screenHeight) - outerPad
         let pad    = self.gridPad
         let dim    = (minDim - pad * Float(rowCount)) / Float(rowCount)
         
@@ -64,25 +65,44 @@ class GridObject {
     }
     
     func update(_ diff: CFTimeInterval) {
+        // Create & Buffer Object Consts
+        var consts = ObjectConsts(matrix: getMatrix(), color: getColor(hex: 0xffffff, alpha: 0.35))
+        memcpy(self.constants[0].contents(), &consts, MemoryLayout<ObjectConsts>.stride)
+
+        // Create Object Data
         let screenWidth  = Float(UIScreen.main.bounds.width)
         let screenHeight = Float(UIScreen.main.bounds.height)
         
         let gridCount = rowCount * rowCount
-        let minDim = min(screenWidth, screenHeight)
+        let minDim = min(screenWidth, screenHeight) - outerPad
         let pad    = self.gridPad
         let dim    = (minDim - pad * Float(rowCount)) / Float(rowCount)
         
-        // Create & Buffer Object Consts
-        var consts = ObjectConsts(matrix: getMatrix(), color: getColor(hex: 0xffffff, alpha: 0.35))
-        memcpy(self.constants[0].contents(), &consts, MemoryLayout<ObjectConsts>.stride)
+        let xOffset = (screenWidth  - minDim) / 2.0
+        let yOffset = (screenHeight - minDim) / 2.0
         
-        // Create Object Data
+        var objectsData: [ObjectData] = []
+        objectsData.reserveCapacity(gridCount)
+        
+        // Create Origins
         for i in 0..<gridCount {
-            let origin = vector_float2(Float(i % 5) * (dim + pad),
-                                       Float(i / 5) * (dim + pad))
-            let data = ObjectData(offset: origin)
-            
-            objectsData.append(data)
+            let origin = vector_float2(Float(i % rowCount) * (dim + pad) + xOffset,
+                                       Float(i / rowCount) * (dim + pad) + yOffset)
+            objectsData.append(ObjectData(offset: origin))
+        }
+        
+        // Animate Origins
+        let cycleDistance: Float = 100
+        let cycleDuration: Float = 0.5
+        let colPhaseOffset = Float.pi / Float(rowCount)
+        
+        time += diff
+        
+        for i in 0..<gridCount {
+            var newObj = objectsData[i]
+            let col = Float(i % rowCount)
+            newObj.offset.y += cycleDistance * sin((Float(time) * (2 * Float.pi / cycleDuration) + colPhaseOffset * col))
+            objectsData[i] = newObj
         }
         
         let ptr = self.constants[0].contents() + MemoryLayout<ObjectConsts>.stride
