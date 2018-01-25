@@ -20,6 +20,10 @@
 		FDA38B13201A219F007AF2F7 /* GridObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA38B12201A219F007AF2F7 /* GridObject.swift */; };
 		FDA38B15201A2292007AF2F7 /* StandardShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = FDA38B14201A2292007AF2F7 /* StandardShaders.metal */; };
 		FDA38B17201A23A5007AF2F7 /* BlurKernel.metal in Sources */ = {isa = PBXBuildFile; fileRef = FDA38B16201A23A5007AF2F7 /* BlurKernel.metal */; };
+		FDA38B19201A27FD007AF2F7 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA38B18201A27FD007AF2F7 /* Background.swift */; };
+		FDA38B1D201A2F5A007AF2F7 /* MetalBridgeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA38B1C201A2F5A007AF2F7 /* MetalBridgeExtension.swift */; };
+		FDA38B1F201A2FD9007AF2F7 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA38B1E201A2FD9007AF2F7 /* Utils.swift */; };
+		FDA38B23201A3532007AF2F7 /* MetalMathUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA38B22201A3532007AF2F7 /* MetalMathUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,11 +38,17 @@
 		FDA38B06201A06D8007AF2F7 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		FDA38B07201A06D8007AF2F7 /* MetalPerformanceShaders.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalPerformanceShaders.framework; path = System/Library/Frameworks/MetalPerformanceShaders.framework; sourceTree = SDKROOT; };
 		FDA38B0B201A06E1007AF2F7 /* MetalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalController.swift; sourceTree = "<group>"; };
-		FDA38B0D201A0724007AF2F7 /* SharedObjectsBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedObjectsBridge.h; sourceTree = "<group>"; };
+		FDA38B0D201A0724007AF2F7 /* MetalBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetalBridge.h; sourceTree = "<group>"; };
 		FDA38B10201A1E38007AF2F7 /* MetalPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalPipeline.swift; sourceTree = "<group>"; };
 		FDA38B12201A219F007AF2F7 /* GridObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridObject.swift; sourceTree = "<group>"; };
 		FDA38B14201A2292007AF2F7 /* StandardShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = StandardShaders.metal; sourceTree = "<group>"; };
 		FDA38B16201A23A5007AF2F7 /* BlurKernel.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BlurKernel.metal; sourceTree = "<group>"; };
+		FDA38B18201A27FD007AF2F7 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		FDA38B1B201A2D3D007AF2F7 /* MetalGrid-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MetalGrid-Bridging-Header.h"; sourceTree = "<group>"; };
+		FDA38B1C201A2F5A007AF2F7 /* MetalBridgeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalBridgeExtension.swift; sourceTree = "<group>"; };
+		FDA38B1E201A2FD9007AF2F7 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		FDA38B21201A3532007AF2F7 /* MetalMathUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetalMathUtils.h; sourceTree = "<group>"; };
+		FDA38B22201A3532007AF2F7 /* MetalMathUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetalMathUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,10 +89,11 @@
 				FDA38AF4201A0666007AF2F7 /* ViewController.swift */,
 				FDA38B0B201A06E1007AF2F7 /* MetalController.swift */,
 				FDA38B10201A1E38007AF2F7 /* MetalPipeline.swift */,
+				FDA38B18201A27FD007AF2F7 /* Background.swift */,
 				FDA38B12201A219F007AF2F7 /* GridObject.swift */,
-				FDA38B0D201A0724007AF2F7 /* SharedObjectsBridge.h */,
-				FDA38B14201A2292007AF2F7 /* StandardShaders.metal */,
-				FDA38B16201A23A5007AF2F7 /* BlurKernel.metal */,
+				FDA38B20201A3503007AF2F7 /* Utils */,
+				FDA38B1A201A2B0E007AF2F7 /* Shaders */,
+				FDA38B1B201A2D3D007AF2F7 /* MetalGrid-Bridging-Header.h */,
 				FDA38AF6201A0666007AF2F7 /* Main.storyboard */,
 				FDA38AF9201A0666007AF2F7 /* Assets.xcassets */,
 				FDA38AFB201A0666007AF2F7 /* LaunchScreen.storyboard */,
@@ -99,6 +110,27 @@
 				FDA38B07201A06D8007AF2F7 /* MetalPerformanceShaders.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FDA38B1A201A2B0E007AF2F7 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				FDA38B1C201A2F5A007AF2F7 /* MetalBridgeExtension.swift */,
+				FDA38B0D201A0724007AF2F7 /* MetalBridge.h */,
+				FDA38B14201A2292007AF2F7 /* StandardShaders.metal */,
+				FDA38B16201A23A5007AF2F7 /* BlurKernel.metal */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		FDA38B20201A3503007AF2F7 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FDA38B21201A3532007AF2F7 /* MetalMathUtils.h */,
+				FDA38B22201A3532007AF2F7 /* MetalMathUtils.m */,
+				FDA38B1E201A2FD9007AF2F7 /* Utils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,10 +208,14 @@
 				FDA38B0C201A06E1007AF2F7 /* MetalController.swift in Sources */,
 				FDA38AF5201A0666007AF2F7 /* ViewController.swift in Sources */,
 				FDA38B17201A23A5007AF2F7 /* BlurKernel.metal in Sources */,
+				FDA38B19201A27FD007AF2F7 /* Background.swift in Sources */,
 				FDA38AF3201A0666007AF2F7 /* AppDelegate.swift in Sources */,
+				FDA38B1F201A2FD9007AF2F7 /* Utils.swift in Sources */,
+				FDA38B1D201A2F5A007AF2F7 /* MetalBridgeExtension.swift in Sources */,
 				FDA38B13201A219F007AF2F7 /* GridObject.swift in Sources */,
 				FDA38B11201A1E38007AF2F7 /* MetalPipeline.swift in Sources */,
 				FDA38B15201A2292007AF2F7 /* StandardShaders.metal in Sources */,
+				FDA38B23201A3532007AF2F7 /* MetalMathUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +359,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.medlylabs.metalgrid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MetalGrid/MetalGrid-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -339,6 +376,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.medlylabs.metalgrid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MetalGrid/MetalGrid-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

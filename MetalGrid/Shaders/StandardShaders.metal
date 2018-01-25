@@ -8,7 +8,7 @@
 
 #include <metal_stdlib>
 #include <simd/simd.h>
-#include "SharedObjectsBridge.h"
+#include "MetalBridge.h"
 using namespace metal;
 
 // Shader Structs
@@ -16,6 +16,26 @@ struct VertexOut {
     float4 position [[position]];
     half4  color;
 };
+
+// Simple Shader
+vertex VertexOut v_simple(device   ColorVertex     *verts   [[buffer(0)]], // Vertex Data
+                          constant matrix_float4x4 &matrix  [[buffer(1)]], // Constant Data (used across all objects)
+                                   uint             vid     [[vertex_id]]) // Iterates through vertices
+{
+    ColorVertex vert = verts[vid];
+    
+    VertexOut out = {
+        .position = matrix * float4(vert.position, 1, 1),
+        .color    = half4(vert.r, vert.g, vert.b, vert.a),
+    };
+    
+    return out;
+}
+
+fragment half4 f_simple(VertexOut frag [[stage_in]]) {
+    return frag.color;
+}
+
 
 
 // Object Shader

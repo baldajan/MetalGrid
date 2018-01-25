@@ -17,13 +17,14 @@ class MetalController: NSObject, MTKViewDelegate {
     // Metal Objects
     weak var metalView: MTKView?
     
-    var device:       MTLDevice?
-    var commandQueue: MTLCommandQueue?
-    var library:      MTLLibrary?
+    var device:       MTLDevice!
+    var commandQueue: MTLCommandQueue!
+    var library:      MTLLibrary!
     
     // Custom Metal Objects
-    var pipeline: MetalPipeline?
-    var grid:     GridObject?
+    var pipeline:   MetalPipeline!
+    var background: Background!
+    var grid:       GridObject!
     
     // Timing Objects
     var timer: CADisplayLink! = nil
@@ -61,7 +62,7 @@ class MetalController: NSObject, MTKViewDelegate {
         mtkView.autoResizeDrawable = true
         mtkView.clearColor = MTLClearColorMake(0, 0, 0, 1)
         mtkView.colorPixelFormat = .bgra8Unorm
-        //mtkView.delegate = self
+        mtkView.delegate = self
         mtkView.isPaused = true
         
         // For ProMotion displays
@@ -80,18 +81,13 @@ class MetalController: NSObject, MTKViewDelegate {
         
         
         // Remaining Metal Objects
-        self.commandQueue = self.device?.makeCommandQueue()
-        self.library      = self.device?.makeDefaultLibrary()
+        self.commandQueue = self.device.makeCommandQueue()!
+        self.library      = self.device.makeDefaultLibrary()!
         
-        if let device = self.device, let library = self.library {
-            self.pipeline = MetalPipeline(device, library)
-        }
+        self.pipeline     = MetalPipeline(device, library)
         
-        self.grid = GridObject()
-        
-//        self.pipeline = MetalPipeline(self)
-//        self.renderer = MetalRenderer(self)
-//        self.textures = MetalTextures(self)
+        self.background   = Background(device)
+        self.grid         = GridObject(device)
     }
     
     

@@ -8,6 +8,14 @@
 
 #include <simd/simd.h>
 
+// Vertex Structs
+typedef struct ColorVertex {
+    vector_float2 position;
+    float r, g, b, a;
+} ColorVertex __attribute__((aligned(16)));
+
+
+// Object Structs
 typedef struct ObjectData {
     vector_float4 color;
     vector_float2 offset;

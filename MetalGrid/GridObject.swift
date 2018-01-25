@@ -7,8 +7,13 @@
 //
 
 import Foundation
+import Metal
 
 class GridObject {
+    
+    init(_ device: MTLDevice) {
+        
+    }
     
     func update(_ diff: CFTimeInterval) {
         

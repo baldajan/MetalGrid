@@ -11,21 +11,23 @@ import Metal
 
 class MetalPipeline {
     
-    var color:   MTLRenderPipelineState! = nil
+    var simple:  MTLRenderPipelineState! = nil
+    var objects: MTLRenderPipelineState! = nil
     var overlay: MTLRenderPipelineState! = nil
     var tex:     MTLRenderPipelineState! = nil
     
     init(_ device: MTLDevice, _ library: MTLLibrary) {
         
-//        let descriptors = [
-//            PipelineDesc("Color",   kernel: "color",   result: {self.color   = $0}),
-//            PipelineDesc("Overlay", kernel: "overlay", result: {self.overlay = $0}),
-//            PipelineDesc("Tex",     kernel: "tex",     result: {self.tex     = $0}),
-//        ]
-//
-//        for desc in descriptors {
-//            desc.load(with: device, library: library)
-//        }
+        let descriptors = [
+            PipelineDesc("Simple",   kernel: "simple",   result: {self.simple   = $0}),
+            //PipelineDesc("Color",   kernel: "color",   result: {self.color   = $0}),
+            //PipelineDesc("Overlay", kernel: "overlay", result: {self.overlay = $0}),
+            //PipelineDesc("Tex",     kernel: "tex",     result: {self.tex     = $0}),
+        ]
+
+        for desc in descriptors {
+            desc.load(with: device, library: library)
+        }
     }
 }
 
