@@ -15,7 +15,7 @@
 		FDA38B08201A06D8007AF2F7 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA38B05201A06D8007AF2F7 /* Metal.framework */; };
 		FDA38B09201A06D8007AF2F7 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA38B06201A06D8007AF2F7 /* MetalKit.framework */; };
 		FDA38B0A201A06D8007AF2F7 /* MetalPerformanceShaders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA38B07201A06D8007AF2F7 /* MetalPerformanceShaders.framework */; };
-		FDA38B0C201A06E1007AF2F7 /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA38B0B201A06E1007AF2F7 /* MetalView.swift */; };
+		FDA38B0C201A06E1007AF2F7 /* MetalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA38B0B201A06E1007AF2F7 /* MetalController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +29,8 @@
 		FDA38B05201A06D8007AF2F7 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		FDA38B06201A06D8007AF2F7 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		FDA38B07201A06D8007AF2F7 /* MetalPerformanceShaders.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalPerformanceShaders.framework; path = System/Library/Frameworks/MetalPerformanceShaders.framework; sourceTree = SDKROOT; };
-		FDA38B0B201A06E1007AF2F7 /* MetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
+		FDA38B0B201A06E1007AF2F7 /* MetalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalController.swift; sourceTree = "<group>"; };
+		FDA38B0D201A0724007AF2F7 /* SharedObjectsBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedObjectsBridge.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,11 +69,12 @@
 			children = (
 				FDA38AF2201A0666007AF2F7 /* AppDelegate.swift */,
 				FDA38AF4201A0666007AF2F7 /* ViewController.swift */,
+				FDA38B0B201A06E1007AF2F7 /* MetalController.swift */,
+				FDA38B0D201A0724007AF2F7 /* SharedObjectsBridge.h */,
 				FDA38AF6201A0666007AF2F7 /* Main.storyboard */,
 				FDA38AF9201A0666007AF2F7 /* Assets.xcassets */,
 				FDA38AFB201A0666007AF2F7 /* LaunchScreen.storyboard */,
 				FDA38AFE201A0666007AF2F7 /* Info.plist */,
-				FDA38B0B201A06E1007AF2F7 /* MetalView.swift */,
 			);
 			path = MetalGrid;
 			sourceTree = "<group>";
@@ -159,7 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDA38B0C201A06E1007AF2F7 /* MetalView.swift in Sources */,
+				FDA38B0C201A06E1007AF2F7 /* MetalController.swift in Sources */,
 				FDA38AF5201A0666007AF2F7 /* ViewController.swift in Sources */,
 				FDA38AF3201A0666007AF2F7 /* AppDelegate.swift in Sources */,
 			);
@@ -299,8 +301,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = F8JCUUZNG3;
+				DEVELOPMENT_TEAM = QT8587YV5R;
 				INFOPLIST_FILE = MetalGrid/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.medlylabs.metalgrid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -314,8 +317,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = F8JCUUZNG3;
+				DEVELOPMENT_TEAM = QT8587YV5R;
 				INFOPLIST_FILE = MetalGrid/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.medlylabs.metalgrid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
