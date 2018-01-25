@@ -30,7 +30,7 @@ class Background {
         
         // Color
         do {
-            let color = getColor(hex: 0x560f55, alpha: 1.0)
+            let color = getColor(hex: 0x1b3562, alpha: 1.0)
             
             let A = ColorVertex(0,           0,            color)
             let B = ColorVertex(screenWidth, 0,            color)
@@ -47,7 +47,7 @@ class Background {
         
         // Bar
         do {
-            let color = getColor(hex: 0x00ffff, alpha: 1.0)
+            let color = getColor(hex: 0xe5992e, alpha: 1.0)
             
             let height: Float = 120
             let yOffset: Float = (screenHeight - height) / 2.0

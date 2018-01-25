@@ -17,7 +17,7 @@ class GridObject {
     let constants:      [MTLBuffer]
     
     let rowCount: Int = 5
-    let gridPad: Float = 10
+    let gridPad: Float = 5
     let outerPad: Float = 200
     
     var time: CFTimeInterval = 0
@@ -65,9 +65,11 @@ class GridObject {
     }
     
     func update(_ diff: CFTimeInterval) {
+        let index = MetalController.instance.getBufferIndex()
+
         // Create & Buffer Object Consts
-        var consts = ObjectConsts(matrix: getMatrix(), color: getColor(hex: 0xffffff, alpha: 0.35))
-        memcpy(self.constants[0].contents(), &consts, MemoryLayout<ObjectConsts>.stride)
+        var consts = ObjectConsts(matrix: getMatrix(), color: getColor(hex: 0xffffff, alpha: 0.55))
+        memcpy(self.constants[index].contents(), &consts, MemoryLayout<ObjectConsts>.stride)
 
         // Create Object Data
         let screenWidth  = Float(UIScreen.main.bounds.width)
@@ -92,8 +94,8 @@ class GridObject {
         }
         
         // Animate Origins
-        let cycleDistance: Float = 100
-        let cycleDuration: Float = 0.5
+        let cycleDistance: Float = 150
+        let cycleDuration: Float = 0.6
         let colPhaseOffset = Float.pi / Float(rowCount)
         
         time += diff
@@ -105,7 +107,7 @@ class GridObject {
             objectsData[i] = newObj
         }
         
-        let ptr = self.constants[0].contents() + MemoryLayout<ObjectConsts>.stride
+        let ptr = self.constants[index].contents() + MemoryLayout<ObjectConsts>.stride
         memcpy(ptr, UnsafeRawPointer(objectsData), MemoryLayout<ObjectData>.stride * gridCount)
     }
     
@@ -116,8 +118,8 @@ class GridObject {
         renderEncoder.setRenderPipelineState(mtl.pipeline.grid)
         
         renderEncoder.setVertexBuffer(self.geometryBuffer, offset: 0, index: 0)
-        renderEncoder.setVertexBuffer(self.constants[0], offset: 0, index: 1)
-        renderEncoder.setVertexBuffer(self.constants[0], offset: MemoryLayout<ObjectConsts>.stride, index: 2)
+        renderEncoder.setVertexBuffer(self.constants[index], offset: 0, index: 1)
+        renderEncoder.setVertexBuffer(self.constants[index], offset: MemoryLayout<ObjectConsts>.stride, index: 2)
         
         renderEncoder.drawIndexedPrimitives(type:              .triangle,
                                             indexCount:        6,
