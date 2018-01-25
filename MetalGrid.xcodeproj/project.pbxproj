@@ -16,6 +16,10 @@
 		FDA38B09201A06D8007AF2F7 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA38B06201A06D8007AF2F7 /* MetalKit.framework */; };
 		FDA38B0A201A06D8007AF2F7 /* MetalPerformanceShaders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA38B07201A06D8007AF2F7 /* MetalPerformanceShaders.framework */; };
 		FDA38B0C201A06E1007AF2F7 /* MetalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA38B0B201A06E1007AF2F7 /* MetalController.swift */; };
+		FDA38B11201A1E38007AF2F7 /* MetalPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA38B10201A1E38007AF2F7 /* MetalPipeline.swift */; };
+		FDA38B13201A219F007AF2F7 /* GridObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA38B12201A219F007AF2F7 /* GridObject.swift */; };
+		FDA38B15201A2292007AF2F7 /* StandardShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = FDA38B14201A2292007AF2F7 /* StandardShaders.metal */; };
+		FDA38B17201A23A5007AF2F7 /* BlurKernel.metal in Sources */ = {isa = PBXBuildFile; fileRef = FDA38B16201A23A5007AF2F7 /* BlurKernel.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +35,10 @@
 		FDA38B07201A06D8007AF2F7 /* MetalPerformanceShaders.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalPerformanceShaders.framework; path = System/Library/Frameworks/MetalPerformanceShaders.framework; sourceTree = SDKROOT; };
 		FDA38B0B201A06E1007AF2F7 /* MetalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalController.swift; sourceTree = "<group>"; };
 		FDA38B0D201A0724007AF2F7 /* SharedObjectsBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedObjectsBridge.h; sourceTree = "<group>"; };
+		FDA38B10201A1E38007AF2F7 /* MetalPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalPipeline.swift; sourceTree = "<group>"; };
+		FDA38B12201A219F007AF2F7 /* GridObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridObject.swift; sourceTree = "<group>"; };
+		FDA38B14201A2292007AF2F7 /* StandardShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = StandardShaders.metal; sourceTree = "<group>"; };
+		FDA38B16201A23A5007AF2F7 /* BlurKernel.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BlurKernel.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +78,11 @@
 				FDA38AF2201A0666007AF2F7 /* AppDelegate.swift */,
 				FDA38AF4201A0666007AF2F7 /* ViewController.swift */,
 				FDA38B0B201A06E1007AF2F7 /* MetalController.swift */,
+				FDA38B10201A1E38007AF2F7 /* MetalPipeline.swift */,
+				FDA38B12201A219F007AF2F7 /* GridObject.swift */,
 				FDA38B0D201A0724007AF2F7 /* SharedObjectsBridge.h */,
+				FDA38B14201A2292007AF2F7 /* StandardShaders.metal */,
+				FDA38B16201A23A5007AF2F7 /* BlurKernel.metal */,
 				FDA38AF6201A0666007AF2F7 /* Main.storyboard */,
 				FDA38AF9201A0666007AF2F7 /* Assets.xcassets */,
 				FDA38AFB201A0666007AF2F7 /* LaunchScreen.storyboard */,
@@ -163,7 +175,11 @@
 			files = (
 				FDA38B0C201A06E1007AF2F7 /* MetalController.swift in Sources */,
 				FDA38AF5201A0666007AF2F7 /* ViewController.swift in Sources */,
+				FDA38B17201A23A5007AF2F7 /* BlurKernel.metal in Sources */,
 				FDA38AF3201A0666007AF2F7 /* AppDelegate.swift in Sources */,
+				FDA38B13201A219F007AF2F7 /* GridObject.swift in Sources */,
+				FDA38B11201A1E38007AF2F7 /* MetalPipeline.swift in Sources */,
+				FDA38B15201A2292007AF2F7 /* StandardShaders.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

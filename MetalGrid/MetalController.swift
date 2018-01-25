@@ -3,7 +3,7 @@
 //  MetalGrid
 //
 //  Created by Basil Al-Dajane on 2018-01-25.
-//  Copyright © 2018 Basil Al-Dajane All rights reserved.
+//  Copyright © 2018 Basil Al-Dajane. All rights reserved.
 //
 
 import Foundation
@@ -20,6 +20,10 @@ class MetalController: NSObject, MTKViewDelegate {
     var device:       MTLDevice?
     var commandQueue: MTLCommandQueue?
     var library:      MTLLibrary?
+    
+    // Custom Metal Objects
+    var pipeline: MetalPipeline?
+    var grid:     GridObject?
     
     // Timing Objects
     var timer: CADisplayLink! = nil
@@ -38,6 +42,8 @@ class MetalController: NSObject, MTKViewDelegate {
         return self.bufferIndex
     }
     
+    
+    //
     // Create Metal Device in init
     override init() {
         self.device = MTLCreateSystemDefaultDevice()
@@ -75,6 +81,14 @@ class MetalController: NSObject, MTKViewDelegate {
         
         // Remaining Metal Objects
         self.commandQueue = self.device?.makeCommandQueue()
+        self.library      = self.device?.makeDefaultLibrary()
+        
+        if let device = self.device, let library = self.library {
+            self.pipeline = MetalPipeline(device, library)
+        }
+        
+        self.grid = GridObject()
+        
 //        self.pipeline = MetalPipeline(self)
 //        self.renderer = MetalRenderer(self)
 //        self.textures = MetalTextures(self)
@@ -117,6 +131,8 @@ class MetalController: NSObject, MTKViewDelegate {
     }
     
     private func update(_ diff: CFTimeInterval) {
+        
+        
 //        self.scissor.update(diff)
 //
 //        WindowController.instance()!.update(diff)
