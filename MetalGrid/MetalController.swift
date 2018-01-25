@@ -23,6 +23,7 @@ class MetalController: NSObject, MTKViewDelegate {
     
     // Custom Metal Objects
     var pipeline:   MetalPipeline!
+    var renderer:   MetalRenderer!
     var background: Background!
     var grid:       GridObject!
     
@@ -63,7 +64,7 @@ class MetalController: NSObject, MTKViewDelegate {
         mtkView.clearColor = MTLClearColorMake(0, 0, 0, 1)
         mtkView.colorPixelFormat = .bgra8Unorm
         mtkView.delegate = self
-        mtkView.isPaused = true
+        mtkView.isPaused = false
         
         // For ProMotion displays
         if #available(iOS 10.3, *) {
@@ -84,7 +85,8 @@ class MetalController: NSObject, MTKViewDelegate {
         self.commandQueue = self.device.makeCommandQueue()!
         self.library      = self.device.makeDefaultLibrary()!
         
-        self.pipeline     = MetalPipeline(device, library)
+        self.pipeline     = MetalPipeline(self)
+        self.renderer     = MetalRenderer(self)
         
         self.background   = Background(device)
         self.grid         = GridObject(device)
@@ -118,9 +120,9 @@ class MetalController: NSObject, MTKViewDelegate {
         
         let bufferIndex = self.bufferIndex
         autoreleasepool {
-            /*self.renderer.render(at: bufferIndex, {
+            self.renderer.render(at: bufferIndex, {
                 self.semaphore.signal()
-            })*/
+            })
         }
         
         self.bufferIndex = (self.bufferIndex + 1) % MetalController.MaxBufferCount

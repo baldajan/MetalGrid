@@ -24,6 +24,7 @@
 		FDA38B1D201A2F5A007AF2F7 /* MetalBridgeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA38B1C201A2F5A007AF2F7 /* MetalBridgeExtension.swift */; };
 		FDA38B1F201A2FD9007AF2F7 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA38B1E201A2FD9007AF2F7 /* Utils.swift */; };
 		FDA38B23201A3532007AF2F7 /* MetalMathUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA38B22201A3532007AF2F7 /* MetalMathUtils.m */; };
+		FDA38B25201A3A54007AF2F7 /* MetalRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA38B24201A3A54007AF2F7 /* MetalRenderer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		FDA38B1E201A2FD9007AF2F7 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		FDA38B21201A3532007AF2F7 /* MetalMathUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetalMathUtils.h; sourceTree = "<group>"; };
 		FDA38B22201A3532007AF2F7 /* MetalMathUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetalMathUtils.m; sourceTree = "<group>"; };
+		FDA38B24201A3A54007AF2F7 /* MetalRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalRenderer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				FDA38AF4201A0666007AF2F7 /* ViewController.swift */,
 				FDA38B0B201A06E1007AF2F7 /* MetalController.swift */,
 				FDA38B10201A1E38007AF2F7 /* MetalPipeline.swift */,
+				FDA38B24201A3A54007AF2F7 /* MetalRenderer.swift */,
 				FDA38B18201A27FD007AF2F7 /* Background.swift */,
 				FDA38B12201A219F007AF2F7 /* GridObject.swift */,
 				FDA38B20201A3503007AF2F7 /* Utils */,
@@ -213,6 +216,7 @@
 				FDA38B1F201A2FD9007AF2F7 /* Utils.swift in Sources */,
 				FDA38B1D201A2F5A007AF2F7 /* MetalBridgeExtension.swift in Sources */,
 				FDA38B13201A219F007AF2F7 /* GridObject.swift in Sources */,
+				FDA38B25201A3A54007AF2F7 /* MetalRenderer.swift in Sources */,
 				FDA38B11201A1E38007AF2F7 /* MetalPipeline.swift in Sources */,
 				FDA38B15201A2292007AF2F7 /* StandardShaders.metal in Sources */,
 				FDA38B23201A3532007AF2F7 /* MetalMathUtils.m in Sources */,

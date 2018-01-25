@@ -16,7 +16,7 @@ class MetalPipeline {
     var overlay: MTLRenderPipelineState! = nil
     var tex:     MTLRenderPipelineState! = nil
     
-    init(_ device: MTLDevice, _ library: MTLLibrary) {
+    init(_ parent: MetalController) {
         
         let descriptors = [
             PipelineDesc("Simple",   kernel: "simple",   result: {self.simple   = $0}),
@@ -26,7 +26,7 @@ class MetalPipeline {
         ]
 
         for desc in descriptors {
-            desc.load(with: device, library: library)
+            desc.load(with: parent.device, library: parent.library)
         }
     }
 }

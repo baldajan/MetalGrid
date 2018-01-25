@@ -30,10 +30,12 @@ class Background {
         
         // Color
         do {
-            let A = ColorVertex(0,           0,            getColor(hex: 0x00ff00, alpha: 1.0))
-            let B = ColorVertex(screenWidth, 0,            getColor(hex: 0x00ff00, alpha: 1.0))
-            let C = ColorVertex(0,           screenHeight, getColor(hex: 0x00ff00, alpha: 1.0))
-            let D = ColorVertex(screenWidth, screenHeight, getColor(hex: 0x00ff00, alpha: 1.0))
+            let color = getColor(hex: 0x00ff00, alpha: 1.0)
+            
+            let A = ColorVertex(0,           0,            color)
+            let B = ColorVertex(screenWidth, 0,            color)
+            let C = ColorVertex(0,           screenHeight, color)
+            let D = ColorVertex(screenWidth, screenHeight, color)
             
             let geometry = [
                 A, B, C,
@@ -45,13 +47,15 @@ class Background {
         
         // Bar
         do {
+            let color = getColor(hex: 0x00ffff, alpha: 1.0)
+            
             let height: Float = 150
             let yOffset: Float = (screenHeight - height) / 2.0
             
-            let A = ColorVertex(0,           yOffset,          getColor(hex: 0x00ffff, alpha: 1.0))
-            let B = ColorVertex(screenWidth, yOffset,          getColor(hex: 0x00ffff, alpha: 1.0))
-            let C = ColorVertex(0,           yOffset + height, getColor(hex: 0x00ffff, alpha: 1.0))
-            let D = ColorVertex(screenWidth, yOffset + height, getColor(hex: 0x00ffff, alpha: 1.0))
+            let A = ColorVertex(0,           yOffset,          color)
+            let B = ColorVertex(screenWidth, yOffset,          color)
+            let C = ColorVertex(0,           yOffset + height, color)
+            let D = ColorVertex(screenWidth, yOffset + height, color)
             
             let geometry = [
                 A, B, C,
@@ -64,16 +68,17 @@ class Background {
     
     func render(with renderEncoder: MTLRenderCommandEncoder) {
         let mtl = MetalController.instance
+        
         var matrix = getMatrix()
+        let len = MemoryLayout<matrix_float4x4>.stride
         
         renderEncoder.pushDebugGroup("Background")
         
         // Draw Color
         renderEncoder.pushDebugGroup("Color")
         renderEncoder.setRenderPipelineState(mtl.pipeline.simple)
-        renderEncoder.setVertexBuffer(self.color, offset: 0, index: 0)
         
-        let len = MemoryLayout<matrix_float4x4>.stride
+        renderEncoder.setVertexBuffer(self.color, offset: 0, index: 0)
         renderEncoder.setVertexBytes(&matrix, length: len, index: 1)
         
         renderEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 6)
@@ -81,16 +86,16 @@ class Background {
         
         
         // Draw Bar
-//        renderEncoder.pushDebugGroup("Color")
-//        renderEncoder.setRenderPipelineState(mtl.pipeline.simple)
-//        renderEncoder.setVertexBuffer(self.color, offset: 0, index: 0)
-//
-//        let len = MemoryLayout<matrix_float4x4>.stride
-//        renderEncoder.setVertexBytes(&matrix, length: len, index: 1)
-//
-//        renderEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 6)
-//        renderEncoder.popDebugGroup()
-//
+        renderEncoder.pushDebugGroup("Bar")
+        renderEncoder.setRenderPipelineState(mtl.pipeline.simple)
+        
+        renderEncoder.setVertexBuffer(self.bar, offset: 0, index: 0)
+        renderEncoder.setVertexBytes(&matrix, length: len, index: 1)
+
+        renderEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 6)
+        renderEncoder.popDebugGroup()
+        
+        // End Draw
         renderEncoder.popDebugGroup()
     }
 }
