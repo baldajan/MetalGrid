@@ -77,13 +77,16 @@ class GridObject {
         let pad    = self.gridPad
         let dim    = (minDim - pad * Float(rowCount)) / Float(rowCount)
         
+        let xOffset = (screenWidth  - minDim) / 2.0
+        let yOffset = (screenHeight - minDim) / 2.0
+        
         var objectsData: [ObjectData] = []
         objectsData.reserveCapacity(gridCount)
         
         // Create Origins
         for i in 0..<gridCount {
-            let origin = vector_float2(Float(i % rowCount) * (dim + pad),
-                                       Float(i / rowCount) * (dim + pad))
+            let origin = vector_float2(Float(i % rowCount) * (dim + pad) + xOffset,
+                                       Float(i / rowCount) * (dim + pad) + yOffset)
             objectsData.append(ObjectData(offset: origin))
         }
         
