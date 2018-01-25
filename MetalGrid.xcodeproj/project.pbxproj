@@ -12,6 +12,10 @@
 		FDA38AF8201A0666007AF2F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDA38AF6201A0666007AF2F7 /* Main.storyboard */; };
 		FDA38AFA201A0666007AF2F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDA38AF9201A0666007AF2F7 /* Assets.xcassets */; };
 		FDA38AFD201A0666007AF2F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDA38AFB201A0666007AF2F7 /* LaunchScreen.storyboard */; };
+		FDA38B08201A06D8007AF2F7 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA38B05201A06D8007AF2F7 /* Metal.framework */; };
+		FDA38B09201A06D8007AF2F7 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA38B06201A06D8007AF2F7 /* MetalKit.framework */; };
+		FDA38B0A201A06D8007AF2F7 /* MetalPerformanceShaders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA38B07201A06D8007AF2F7 /* MetalPerformanceShaders.framework */; };
+		FDA38B0C201A06E1007AF2F7 /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA38B0B201A06E1007AF2F7 /* MetalView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		FDA38AF9201A0666007AF2F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FDA38AFC201A0666007AF2F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FDA38AFE201A0666007AF2F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FDA38B05201A06D8007AF2F7 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		FDA38B06201A06D8007AF2F7 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
+		FDA38B07201A06D8007AF2F7 /* MetalPerformanceShaders.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalPerformanceShaders.framework; path = System/Library/Frameworks/MetalPerformanceShaders.framework; sourceTree = SDKROOT; };
+		FDA38B0B201A06E1007AF2F7 /* MetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +37,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDA38B08201A06D8007AF2F7 /* Metal.framework in Frameworks */,
+				FDA38B09201A06D8007AF2F7 /* MetalKit.framework in Frameworks */,
+				FDA38B0A201A06D8007AF2F7 /* MetalPerformanceShaders.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +51,7 @@
 			children = (
 				FDA38AF1201A0666007AF2F7 /* MetalGrid */,
 				FDA38AF0201A0666007AF2F7 /* Products */,
+				FDA38B04201A06D8007AF2F7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,8 +72,19 @@
 				FDA38AF9201A0666007AF2F7 /* Assets.xcassets */,
 				FDA38AFB201A0666007AF2F7 /* LaunchScreen.storyboard */,
 				FDA38AFE201A0666007AF2F7 /* Info.plist */,
+				FDA38B0B201A06E1007AF2F7 /* MetalView.swift */,
 			);
 			path = MetalGrid;
+			sourceTree = "<group>";
+		};
+		FDA38B04201A06D8007AF2F7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FDA38B05201A06D8007AF2F7 /* Metal.framework */,
+				FDA38B06201A06D8007AF2F7 /* MetalKit.framework */,
+				FDA38B07201A06D8007AF2F7 /* MetalPerformanceShaders.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDA38B0C201A06E1007AF2F7 /* MetalView.swift in Sources */,
 				FDA38AF5201A0666007AF2F7 /* ViewController.swift in Sources */,
 				FDA38AF3201A0666007AF2F7 /* AppDelegate.swift in Sources */,
 			);
@@ -278,7 +302,7 @@
 				DEVELOPMENT_TEAM = F8JCUUZNG3;
 				INFOPLIST_FILE = MetalGrid/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.medlylabs.MetalGrid;
+				PRODUCT_BUNDLE_IDENTIFIER = com.medlylabs.metalgrid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -293,7 +317,7 @@
 				DEVELOPMENT_TEAM = F8JCUUZNG3;
 				INFOPLIST_FILE = MetalGrid/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.medlylabs.MetalGrid;
+				PRODUCT_BUNDLE_IDENTIFIER = com.medlylabs.metalgrid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
