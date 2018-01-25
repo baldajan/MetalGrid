@@ -16,8 +16,9 @@ class GridObject {
     let indexBuffer:    MTLBuffer
     let constants:      [MTLBuffer]
     
-    let rowCount: Int = 5 // make sure it's odd
+    let rowCount: Int = 5
     let gridPad: Float = 10
+    let outerPad: Float = 200
     
     var time: CFTimeInterval = 0
     
@@ -41,7 +42,7 @@ class GridObject {
         let screenWidth  = Float(UIScreen.main.bounds.width)
         let screenHeight = Float(UIScreen.main.bounds.height)
         
-        let minDim = min(screenWidth, screenHeight)
+        let minDim = min(screenWidth, screenHeight) - outerPad
         let pad    = self.gridPad
         let dim    = (minDim - pad * Float(rowCount)) / Float(rowCount)
         
@@ -73,7 +74,7 @@ class GridObject {
         let screenHeight = Float(UIScreen.main.bounds.height)
         
         let gridCount = rowCount * rowCount
-        let minDim = min(screenWidth, screenHeight)
+        let minDim = min(screenWidth, screenHeight) - outerPad
         let pad    = self.gridPad
         let dim    = (minDim - pad * Float(rowCount)) / Float(rowCount)
         
