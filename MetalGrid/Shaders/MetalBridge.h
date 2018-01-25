@@ -17,6 +17,12 @@ typedef struct ColorVertex {
 
 // Object Structs
 typedef struct ObjectData {
-    vector_float4 color;
     vector_float2 offset;
 } ObjectData __attribute__((aligned(16)));
+
+
+// Object Consts
+typedef struct ObjectConsts {
+    matrix_float4x4 matrix;
+    vector_float4   color;
+} ObjectConsts __attribute__((aligned(16)));

@@ -14,3 +14,4 @@ extension ColorVertex {
         self.r = color.x; self.g = color.y; self.b = color.z; self.a = color.w;
     }
 }
+

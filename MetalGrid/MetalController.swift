@@ -129,15 +129,7 @@ class MetalController: NSObject, MTKViewDelegate {
     }
     
     private func update(_ diff: CFTimeInterval) {
-        
-        
-//        self.scissor.update(diff)
-//
-//        WindowController.instance()!.update(diff)
-//
-//        AudioController.instance().playback.update(diff)
-//        SessionController.instance.update(diff)
-//        SectionController.instance.update(diff)
+        self.grid.update(diff)
     }
     
     private func executeQueue() {

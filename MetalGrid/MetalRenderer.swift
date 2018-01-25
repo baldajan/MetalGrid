@@ -39,6 +39,7 @@ class MetalRenderer {
         self.dispatchQueue.async {
             self.renderToScreen(commandBuffer: mainBuffer, block: { renderEncoder in
                 self.parent.background.render(with: renderEncoder)
+                self.parent.grid.render(with: renderEncoder, index: index)
             })
             
             mainBuffer.addCompletedHandler { _ in

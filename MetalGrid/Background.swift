@@ -30,7 +30,7 @@ class Background {
         
         // Color
         do {
-            let color = getColor(hex: 0x00ff00, alpha: 1.0)
+            let color = getColor(hex: 0x560f55, alpha: 1.0)
             
             let A = ColorVertex(0,           0,            color)
             let B = ColorVertex(screenWidth, 0,            color)

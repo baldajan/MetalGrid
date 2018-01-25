@@ -14,7 +14,7 @@ func getColor(hex: UInt32, alpha: Float) -> vector_float4 {
     let green = Float((hex & 0x00_FF_00) >>  8)
     let blue  = Float((hex & 0x00_00_FF) >>  0)
         
-    return vector_float4(red, green, blue, alpha)
+    return vector_float4(Float(red)/255.0, Float(green)/255.0, Float(blue)/255.0, alpha)
 }
 
 func getMatrix() -> matrix_float4x4 {
