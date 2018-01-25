@@ -15,3 +15,10 @@ extension ColorVertex {
     }
 }
 
+extension TexVertex {
+    init(_ x: Float, _ y: Float, _ texCoordX: Float, _ texCoordY: Float) {
+        self.position = vector_float2(x, y)
+        self.texCoord = vector_float2(texCoordX, texCoordY)
+    }
+}
+

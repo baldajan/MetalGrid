@@ -11,16 +11,20 @@ import Metal
 
 class MetalPipeline {
     
+    let blur:    GaussianBlurFilter
+    
     var simple:  MTLRenderPipelineState! = nil
     var grid:    MTLRenderPipelineState! = nil
     var tex:     MTLRenderPipelineState! = nil
     
     init(_ parent: MetalController) {
         
+        self.blur = GaussianBlurFilter(parent, parent.library)
+        
         let descriptors = [
-            PipelineDesc("Simple",   kernel: "simple", result: {self.simple = $0}),
-            PipelineDesc("Grid",     kernel: "grid",   result: {self.grid   = $0}),
-            //PipelineDesc("Tex",     kernel: "tex",     result: {self.tex     = $0}),
+            PipelineDesc("Simple", kernel: "simple", result: {self.simple = $0}),
+            PipelineDesc("Grid",   kernel: "grid",   result: {self.grid   = $0}),
+            PipelineDesc("Tex",    kernel: "tex",    result: {self.tex    = $0}),
         ]
 
         for desc in descriptors {

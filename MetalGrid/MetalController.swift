@@ -24,8 +24,11 @@ class MetalController: NSObject, MTKViewDelegate {
     // Custom Metal Objects
     var pipeline:   MetalPipeline!
     var renderer:   MetalRenderer!
+    var textures:   MetalTextures!
+    
     var background: Background!
     var grid:       GridObject!
+    var blur:       BlurObject!
     
     // Timing Objects
     var timer: CADisplayLink! = nil
@@ -87,9 +90,11 @@ class MetalController: NSObject, MTKViewDelegate {
         
         self.pipeline     = MetalPipeline(self)
         self.renderer     = MetalRenderer(self)
+        self.textures     = MetalTextures(self)
         
         self.background   = Background(device)
         self.grid         = GridObject(device)
+        self.blur         = BlurObject(device)
     }
     
     
@@ -98,12 +103,12 @@ class MetalController: NSObject, MTKViewDelegate {
     
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
         // Update layout here
-        
-//        if self.textures == nil { return }
-//        self.queue.append {
-//            self.textures.layoutChanged()
-//            SessionController.instance.layoutChanged()
-//        }
+        self.queue.append {
+            self.textures.layoutChanged()
+            self.background.layoutChanged()
+            self.grid.layoutChanged()
+            self.blur.layoutChanged()
+        }
     }
     
     func draw(in view: MTKView) {

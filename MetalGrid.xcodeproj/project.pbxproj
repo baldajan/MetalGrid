@@ -25,6 +25,9 @@
 		FDA38B1F201A2FD9007AF2F7 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA38B1E201A2FD9007AF2F7 /* Utils.swift */; };
 		FDA38B23201A3532007AF2F7 /* MetalMathUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA38B22201A3532007AF2F7 /* MetalMathUtils.m */; };
 		FDA38B25201A3A54007AF2F7 /* MetalRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA38B24201A3A54007AF2F7 /* MetalRenderer.swift */; };
+		FDA38B2B201A69ED007AF2F7 /* MetalTextures.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA38B2A201A69ED007AF2F7 /* MetalTextures.swift */; };
+		FDA38B2D201A6CCB007AF2F7 /* BlurObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA38B2C201A6CCB007AF2F7 /* BlurObject.swift */; };
+		FDA38B2F201A6D1F007AF2F7 /* GaussianBlurFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA38B2E201A6D1F007AF2F7 /* GaussianBlurFilter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +54,9 @@
 		FDA38B21201A3532007AF2F7 /* MetalMathUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetalMathUtils.h; sourceTree = "<group>"; };
 		FDA38B22201A3532007AF2F7 /* MetalMathUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetalMathUtils.m; sourceTree = "<group>"; };
 		FDA38B24201A3A54007AF2F7 /* MetalRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalRenderer.swift; sourceTree = "<group>"; };
+		FDA38B2A201A69ED007AF2F7 /* MetalTextures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalTextures.swift; sourceTree = "<group>"; };
+		FDA38B2C201A6CCB007AF2F7 /* BlurObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurObject.swift; sourceTree = "<group>"; };
+		FDA38B2E201A6D1F007AF2F7 /* GaussianBlurFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GaussianBlurFilter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,8 +98,11 @@
 				FDA38B0B201A06E1007AF2F7 /* MetalController.swift */,
 				FDA38B10201A1E38007AF2F7 /* MetalPipeline.swift */,
 				FDA38B24201A3A54007AF2F7 /* MetalRenderer.swift */,
+				FDA38B2A201A69ED007AF2F7 /* MetalTextures.swift */,
 				FDA38B18201A27FD007AF2F7 /* Background.swift */,
 				FDA38B12201A219F007AF2F7 /* GridObject.swift */,
+				FDA38B2C201A6CCB007AF2F7 /* BlurObject.swift */,
+				FDA38B2E201A6D1F007AF2F7 /* GaussianBlurFilter.swift */,
 				FDA38B20201A3503007AF2F7 /* Utils */,
 				FDA38B1A201A2B0E007AF2F7 /* Shaders */,
 				FDA38B1B201A2D3D007AF2F7 /* MetalGrid-Bridging-Header.h */,
@@ -214,7 +223,10 @@
 				FDA38B19201A27FD007AF2F7 /* Background.swift in Sources */,
 				FDA38AF3201A0666007AF2F7 /* AppDelegate.swift in Sources */,
 				FDA38B1F201A2FD9007AF2F7 /* Utils.swift in Sources */,
+				FDA38B2B201A69ED007AF2F7 /* MetalTextures.swift in Sources */,
+				FDA38B2D201A6CCB007AF2F7 /* BlurObject.swift in Sources */,
 				FDA38B1D201A2F5A007AF2F7 /* MetalBridgeExtension.swift in Sources */,
+				FDA38B2F201A6D1F007AF2F7 /* GaussianBlurFilter.swift in Sources */,
 				FDA38B13201A219F007AF2F7 /* GridObject.swift in Sources */,
 				FDA38B25201A3A54007AF2F7 /* MetalRenderer.swift in Sources */,
 				FDA38B11201A1E38007AF2F7 /* MetalPipeline.swift in Sources */,

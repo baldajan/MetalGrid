@@ -17,6 +17,13 @@ struct VertexOut {
     half4  color;
 };
 
+struct VertexTexOut {
+    float4 position [[position]];
+    float2 texCoord;
+};
+
+
+
 // Simple Shader
 vertex VertexOut v_simple(device   ColorVertex     *verts   [[buffer(0)]], // Vertex Data
                           constant matrix_float4x4 &matrix  [[buffer(1)]], // Constant Data (used across all objects)
@@ -38,6 +45,8 @@ fragment half4 f_simple(VertexOut frag [[stage_in]]) {
 
 
 
+
+
 // Blend Overlay
 half BlendOverlayColor(half color, half dest);
 half BlendOverlayColor(half color, half dest) {
@@ -51,7 +60,9 @@ half4 BlendOverlay(half4 color, half4 dest) {
                  color.a);
 }
 
-// Object Shader
+
+
+// Grid Shader
 vertex VertexOut v_grid(device   vector_float2   *verts   [[buffer(0)]],   // Vertex Data
                         constant ObjectConsts    &consts  [[buffer(1)]],   // Constant Data (used across all objects)
                         constant ObjectData      *objects [[buffer(2)]],   // Objects Data
@@ -75,3 +86,27 @@ fragment half4 f_grid(VertexOut frag [[stage_in]],
 }
 
 
+
+
+// Texture Shader
+vertex VertexTexOut v_tex(device   TexVertex       *verts  [[buffer(0)]],
+                          constant matrix_float4x4 &matrix [[buffer(1)]],
+                                       uint         vid    [[vertex_id]])
+{
+    float2 pos = verts[vid].position;
+    float2 texCoord = verts[vid].texCoord;
+    
+    VertexTexOut out = {
+        .position = matrix * float4(pos, 1, 1),
+        .texCoord = texCoord,
+    };
+    
+    return out;
+}
+
+fragment half4 f_tex(VertexTexOut                     frag   [[stage_in]],
+                     texture2d<float, access::sample> tex    [[texture(0)]],
+                     sampler                          samplr [[sampler(0)]])
+{
+    return half4(tex.sample(samplr, frag.texCoord));
+}

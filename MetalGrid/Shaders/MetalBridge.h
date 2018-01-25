@@ -14,6 +14,11 @@ typedef struct ColorVertex {
     float r, g, b, a;
 } ColorVertex __attribute__((aligned(16)));
 
+typedef struct TexVertex {
+    vector_float2 position;
+    vector_float2 texCoord;
+} TexVertex __attribute__((aligned(16)));
+
 
 // Object Structs
 typedef struct ObjectData {

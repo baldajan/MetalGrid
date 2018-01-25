@@ -49,7 +49,7 @@ class Background {
         do {
             let color = getColor(hex: 0x00ffff, alpha: 1.0)
             
-            let height: Float = 150
+            let height: Float = 120
             let yOffset: Float = (screenHeight - height) / 2.0
             
             let A = ColorVertex(0,           yOffset,          color)

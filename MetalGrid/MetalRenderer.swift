@@ -24,15 +24,40 @@ class MetalRenderer {
         let dispatchGroup = DispatchGroup()
         
         // Create Command Buffers
+        let backBuffer = self.parent.commandQueue.makeCommandBuffer()!
+        let blurBuffer = self.parent.commandQueue.makeCommandBuffer()!
         let mainBuffer = self.parent.commandQueue.makeCommandBuffer()!
+        
+        backBuffer.enqueue()
+        blurBuffer.enqueue()
         mainBuffer.enqueue()
         
         
         // Render to texture
-        
+        dispatchGroup.enter()
+        self.dispatchQueue.async {
+            let texture = self.parent.textures.blurTextureSrc!
+            self.renderToTexture(commandBuffer: backBuffer, texture: texture, block: { renderEncoder in
+                self.parent.background.render(with: renderEncoder)
+                self.parent.grid.render(with: renderEncoder, index: index)
+            })
+            
+            backBuffer.commit()
+            dispatchGroup.leave()
+        }
         
         // Blur
-        
+        dispatchGroup.enter()
+        self.dispatchQueue.async {
+            let textureSrc = self.parent.textures.blurTextureSrc!
+            let textureDst = self.parent.textures.blurTextureDst!
+            let blur       = self.parent.pipeline.blur
+            
+            blur.encode(commandBuffer: blurBuffer, sourceTexture: textureSrc, destinationTexture: textureDst)
+            
+            blurBuffer.commit()
+            dispatchGroup.leave()
+        }
         
         // Render to screen
         dispatchGroup.enter()
@@ -40,6 +65,7 @@ class MetalRenderer {
             self.renderToScreen(commandBuffer: mainBuffer, block: { renderEncoder in
                 self.parent.background.render(with: renderEncoder)
                 self.parent.grid.render(with: renderEncoder, index: index)
+                self.parent.blur.render(with: renderEncoder)
             })
             
             mainBuffer.addCompletedHandler { _ in
@@ -53,6 +79,7 @@ class MetalRenderer {
         // Now Wait
         _ = dispatchGroup.wait(timeout: DispatchTime.distantFuture)
         
+        // Use For `presentWithTransaction`
         if let view = MetalController.instance.metalView,
             let drawable = view.currentDrawable,
             view.presentsWithTransaction
