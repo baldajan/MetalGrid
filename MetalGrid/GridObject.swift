@@ -92,8 +92,8 @@ class GridObject {
         }
         
         // Animate Origins
-        let cycleDistance: Float = 50
-        let cycleDuration: Float = 1.0
+        let cycleDistance: Float = 100
+        let cycleDuration: Float = 0.5
         let colPhaseOffset = Float.pi / Float(rowCount)
         
         time += diff
