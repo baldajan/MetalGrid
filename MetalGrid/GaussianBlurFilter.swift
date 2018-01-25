@@ -55,8 +55,8 @@ class GaussianBlurFilter {
     private func generateBlurWeightTexture() {
         guard let device = self.parent.device else { return }
         
-        let sigma:    Float = 1
-        let radius:   Float = 4
+        let sigma:    Float = 2
+        let radius:   Float = 8
         let size:     Int   = Int(round(radius) * 2.0) + 1
         let delta:    Float = (radius * 2.0) / (Float(size) - 1.0)
         let expScale: Float = -1.0 / (2.0 * sigma * sigma)
