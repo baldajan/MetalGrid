@@ -3,7 +3,7 @@
 //  MetalGrid
 //
 //  Created by Basil Al-Dajane on 2018-01-25.
-//  Copyright © 2018 Medly Labs Inc. All rights reserved.
+//  Copyright © 2018 Basil Al-Dajane. All rights reserved.
 //
 
 import Foundation
@@ -35,7 +35,7 @@ class MetalTextures {
     }
     
     func layoutChanged() {
-        let useMPS       = false //self.parent.device.supportsFeatureSet(.iOS_GPUFamily2_v2)
+        let useMPS       = self.parent.device.supportsFeatureSet(.iOS_GPUFamily2_v2)
         let screenWidth  = Int(UIScreen.main.bounds.width)
         let screenHeight = Int(UIScreen.main.bounds.height)
         
@@ -48,7 +48,7 @@ class MetalTextures {
         self.blurTextureSrc = self.parent.device.makeTexture(descriptor: texDesc)
         
         if useMPS {
-            //self.blurTextureDst = self.parent.device.makeTexture(descriptor: texDesc)
+            self.blurTextureDst = self.parent.device.makeTexture(descriptor: texDesc)
         } else {
             texDesc.width  = (texDesc.width / 4)
             texDesc.height = (texDesc.height / 4)

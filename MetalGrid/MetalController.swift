@@ -31,7 +31,6 @@ class MetalController: NSObject, MTKViewDelegate {
     var blur:       BlurObject!
     
     // Timing Objects
-    var timer: CADisplayLink! = nil
     private var lastFrameTimeStamp: CFTimeInterval = 0.0
     
     // Triple Buffer Objects & Methods

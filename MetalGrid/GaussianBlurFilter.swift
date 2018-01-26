@@ -3,7 +3,7 @@
 //  Medly
 //
 //  Created by Basil Al-Dajane on 2017-01-30.
-//  Copyright © 2017 Medly Labs Inc. All rights reserved.
+//  Copyright © 2017 Basil Al-Dajane. All rights reserved.
 //
 
 import Foundation
@@ -28,10 +28,10 @@ class GaussianBlurFilter {
     init(_ parent: MetalController, _ library: MTLLibrary) {
         self.parent = parent
         
-        self.useMPS = false //device.supportsFeatureSet(.iOS_GPUFamily2_v2)
+        self.useMPS = parent.device.supportsFeatureSet(.iOS_GPUFamily2_v2)
         
         if self.useMPS {
-            self.blurMPS = MPSImageGaussianBlur(device: self.parent.device, sigma: 5)
+            self.blurMPS = MPSImageGaussianBlur(device: self.parent.device, sigma: 7)
             self.blurMPS!.edgeMode = .clamp
             
             self.downKernelFunc = nil
